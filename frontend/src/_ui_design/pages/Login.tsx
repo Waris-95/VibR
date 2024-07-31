@@ -29,7 +29,7 @@ const Login = () => {
 					</div>
 					<Link
 						to='/signup'
-						className='text-sm  hover:underline text-white hover:text-blue-600 mt-2 inline-block'
+						className='text-sm  hover:underline text-white hover:text-blue-900 mt-2 inline-block'
 					>
 						{"Don't"} have an account?
 					</Link>
