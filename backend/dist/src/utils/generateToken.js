@@ -13,8 +13,8 @@ const generateToken = (userId, res) => {
     res.cookie("jwt", token, {
         maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days in milliseconds
         httpOnly: true, // Prevent XSS cross-site scripting
-        sameSite: "strict", // Prevent CSRF attacks
-        secure: process.env.NODE_ENV !== "development", // Use HTTPS in production
+		sameSite: "strict", // CSRF attack cross-site request forgery
+		secure: process.env.NODE_ENV !== "development", // HTTPS
     });
 
     return token;
