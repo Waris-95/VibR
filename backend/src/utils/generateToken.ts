@@ -25,7 +25,7 @@ const generateToken = (userId: string, res: Response) => {
         res.cookie("jwt", token, {
             maxAge: 15 * 24 * 60 * 60 * 1000, // Cookie expires in 15 days, converted to milliseconds.
             httpOnly: true,  // Protect against XSS attacks by not allowing client-side JavaScript access.
-            sameSite: "none", // Specify None for cross-site cookie use.
+            sameSite: "strict", // Specify None for cross-site cookie use.
             secure: process.env.NODE_ENV !== "development", // Only use secure cookies in production (requires HTTPS).
         });
 
