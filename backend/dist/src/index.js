@@ -4,17 +4,28 @@ import path from "path";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import dotenv from "dotenv";
+import protectRoute from "./middleware/protectRoute.js";
 import { app, server } from "./socket/socket.js";
+import cors from "cors";
 dotenv.config();
 
 const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
 
+
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
 // Middleware
 app.use(cookieParser()); // for parsing cookies
 app.use(express.json()); // for parsing application/json
 
 // API Routes
+app.use("/api/auth/me", protectRoute);
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 

@@ -1,5 +1,4 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
-
 import { Request, Response, NextFunction } from "express";
 import prisma from "../prisma.js";
 
@@ -12,6 +11,9 @@ declare global {
 		export interface Request {
 			user: {
 				id: string;
+				username: string;
+				fullName: string;
+				profilePic: string;
 			};
 		}
 	}
@@ -19,15 +21,21 @@ declare global {
 
 const protectRoute = async (req: Request, res: Response, next: NextFunction) => {
 	try {
+		console.log('Cookies received:', req.cookies); // Log all cookies
+
 		const token = req.cookies.jwt;
+		console.log('Token received:', token); // Log token
 
 		if (!token) {
+			console.error('No token provided');
 			return res.status(401).json({ error: "Unauthorized - No token provided" });
 		}
 
 		const decoded = jwt.verify(token, process.env.JWT_SECRET!) as DecodedToken;
+		console.log('Decoded token:', decoded); // Log decoded token
 
 		if (!decoded) {
+			console.error('Invalid token');
 			return res.status(401).json({ error: "Unauthorized - Invalid Token" });
 		}
 
@@ -37,14 +45,16 @@ const protectRoute = async (req: Request, res: Response, next: NextFunction) => 
 		});
 
 		if (!user) {
+			console.error('User not found');
 			return res.status(404).json({ error: "User not found" });
 		}
 
 		req.user = user;
+		console.log('User authenticated:', user); // Log authenticated user
 
 		next();
 	} catch (error: any) {
-		console.log("Error in protectRoute middleware", error.message);
+		console.error('Error in protectRoute middleware', error.message);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 };

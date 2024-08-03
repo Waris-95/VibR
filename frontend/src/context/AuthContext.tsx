@@ -24,6 +24,20 @@ export const useAuthContext = () => {
 	return useContext(AuthContext);
 };
 
+// Function to get cookie by name
+const getCookieValue = (name: string) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() ?? null;
+    return null;
+};
+
+// Function to log JWT token from cookies
+const logJwtToken = () => {
+    const jwtToken = getCookieValue('jwt');
+    console.log('JWT Token from cookies:', jwtToken);
+};
+
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	const [authUser, setAuthUser] = useState<AuthUserType | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +46,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		const fetchAuthUser = async () => {
 			try {
+				console.log("Fetching auth user..."); // Log for debugging
 				const res = await fetch("/api/auth/me", {
 					method: 'GET',
 					credentials: 'include', // Include credentials with request
@@ -50,7 +65,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		};
 
 		fetchAuthUser();
-	}, []);
+		logJwtToken(); // Log JWT token after fetching auth user
+	}, []); // Ensure empty dependency array to only run once
 
 	return (
 		<AuthContext.Provider
