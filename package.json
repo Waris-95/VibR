@@ -5,9 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon --watch backend/src --exec 'node --loader ts-node/esm backend/src/index.ts'",
-		"build": "tsc && npm install && prisma generate --schema=./backend/prisma/schema.prisma && npm install --prefix frontend && npm run build --prefix frontend",
+		"build": "echo 'Compiling TypeScript...' && tsc && echo 'Generating Prisma client...' && prisma generate --schema=./backend/prisma/schema.prisma && echo 'Installing frontend dependencies...' && npm install --prefix frontend && echo 'Building frontend...' && npm run build --prefix frontend",
 		"start": "node backend/dist/index.js"
-	},
+	  },
 	"type": "module",
 	"keywords": [],
 	"author": "",
