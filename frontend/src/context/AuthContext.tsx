@@ -2,26 +2,26 @@ import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffe
 import toast from "react-hot-toast";
 
 type AuthUserType = {
-	id: string;
-	fullName: string;
-	email: string;
-	profilePic: string;
-	gender: string;
+    id: string;
+    fullName: string;
+    email: string;
+    profilePic: string;
+    gender: string;
 };
 
 const AuthContext = createContext<{
-	authUser: AuthUserType | null;
-	setAuthUser: Dispatch<SetStateAction<AuthUserType | null>>;
-	isLoading: boolean;
+    authUser: AuthUserType | null;
+    setAuthUser: Dispatch<SetStateAction<AuthUserType | null>>;
+    isLoading: boolean;
 }>({
-	authUser: null,
-	setAuthUser: () => {},
-	isLoading: true,
+    authUser: null,
+    setAuthUser: () => {},
+    isLoading: true,
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuthContext = () => {
-	return useContext(AuthContext);
+    return useContext(AuthContext);
 };
 
 // Function to get cookie by name
@@ -33,16 +33,11 @@ const getCookieValue = (name: string) => {
 };
 
 // Function to log JWT token from cookies
-const logJwtToken = () => {
-    const jwtToken = getCookieValue('jwt');
-    console.log('JWT Token from cookies:', jwtToken);
-};
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-	const [authUser, setAuthUser] = useState<AuthUserType | null>(null);
-	const [isLoading, setIsLoading] = useState(true);
+    const [authUser, setAuthUser] = useState<AuthUserType | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-	// logic will go here
 	useEffect(() => {
 		const fetchAuthUser = async () => {
 			try {
@@ -63,20 +58,28 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 				setIsLoading(false);
 			}
 		};
-
+	
 		fetchAuthUser();
 		logJwtToken(); // Log JWT token after fetching auth user
 	}, []); // Ensure empty dependency array to only run once
+	
+	// Function to log JWT token from cookies
+	const logJwtToken = () => {
+		const jwtToken = getCookieValue('jwt');
+		console.log('JWT Token from cookies:', jwtToken);
+	};
+	
+	
 
-	return (
-		<AuthContext.Provider
-			value={{
-				authUser,
-				isLoading,
-				setAuthUser,
-			}}
-		>
-			{children}
-		</AuthContext.Provider>
-	);
+    return (
+        <AuthContext.Provider
+            value={{
+                authUser,
+                isLoading,
+                setAuthUser,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 };

@@ -9,32 +9,30 @@ import { Response } from "express";
  * @returns {string} The generated JWT.
  */
 const generateToken = (userId: string, res: Response) => {
-    // Check if the JWT_SECRET is available before attempting to generate a token.
     if (!process.env.JWT_SECRET) {
         console.error("JWT_SECRET environment variable is not set");
         throw new Error("JWT_SECRET environment variable is not set");
     }
 
     try {
-        // Generate the JWT.
         const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
-            expiresIn: "15d",  // Token expires in 15 days.
+            expiresIn: "15d",
         });
 
-        // Attach the token to an HTTP cookie with proper security settings.
+        const isProduction = process.env.NODE_ENV === "production";
         res.cookie("jwt", token, {
-            maxAge: 15 * 24 * 60 * 60 * 1000, // Cookie expires in 15 days, converted to milliseconds.
-            httpOnly: true,  // Protect against XSS attacks by not allowing client-side JavaScript access.
-            sameSite: "strict", // Specify None for cross-site cookie use.
-            secure: process.env.NODE_ENV !== "development", // Only use secure cookies in production (requires HTTPS).
+            maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
+            httpOnly: true,
+            sameSite: isProduction ? "none" : "lax",
+            secure: isProduction,
         });
 
-        console.log('Token set in cookie:', token); // Log for debugging
+        console.log('Token set in cookie:', token);
 
         return token;
-    } catch (error:any) {
+    } catch (error: any) {
         console.error('Error in generateToken:', error.message);
-        throw error; // Rethrow the error after logging it for further handling by the caller.
+        throw error;
     }
 };
 
