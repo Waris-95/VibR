@@ -187,3 +187,34 @@ body, html {
     justify-content: center;
   }
 }
+
+@media (max-width: 430px) {
+  .text-lg {
+    font-size: 1.25rem;
+  }
+  .md\:text-5xl {
+    font-size: 2rem;
+  }
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  .md\:text-xl {
+    font-size: 1rem;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .min-h-screen {
+    min-height: 100vh;
+  }
+}

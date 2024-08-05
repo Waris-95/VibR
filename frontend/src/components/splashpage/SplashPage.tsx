@@ -63,9 +63,9 @@ const SplashPage: React.FC = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="flex flex-col items-center justify-center min-h-screen space-y-6 bg-black bg-opacity-60">
+        <div className="flex flex-col items-center justify-center min-h-screen space-y-6 bg-black bg-opacity-60 p-4">
           <h1 className="text-lg font-medium md:text-5xl animate-fadeIn text-gradient typing-effect">Welcome To Vibr</h1>
-          <p className="text-sm font-light md:text-sm animate-fadeIn delay-1s">Connect with your friends and the world around you.</p>
+          <p className="text-sm font-light md:text-sm animate-fadeIn delay-1s text-center">Connect with your friends and the world around you.</p>
           <div className="space-x-4 animate-fadeIn delay-2s flex flex-col md:flex-row">
             <Link to="/login" className="btn btn-primary px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-purple-300 to-purple-700 rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-900 transition duration-500 transform hover:scale-105 mb-4 md:mb-0">Login</Link>
             <Link to="/signup" className="btn btn-secondary px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-gray-500 to-transparent rounded-lg shadow-lg hover:from-purple-700 hover:to-gray-900 transition duration-500 transform hover:scale-105">Sign Up</Link>
@@ -97,38 +97,6 @@ const SplashPage: React.FC = () => {
           </div>
         </div>
       </section>
-{/* 
-      <section ref={featuresSectionRef} className="py-20 bg-black text-white mt-10">
-        <div className="container mx-auto text-center px-4">
-          <h2 className="text-3xl font-bold md:text-5xl text-gradient mb-8">Features</h2>
-          <div className="text-left md:text-center space-y-6 text-lg md:text-xl leading-relaxed">
-            <div className="flex items-start md:justify-center">
-              <span className="mr-2">🌟</span>
-              <p>Stack: + TypeScript + Socket.io + Prisma + PostgreSQL + TailwindCSS</p>
-            </div>
-            <div className="flex items-start md:justify-center">
-              <span className="mr-2">🎃</span>
-              <p>Authentication && Authorization with JWT</p>
-            </div>
-            <div className="flex items-start md:justify-center">
-              <span className="mr-2">👾</span>
-              <p>Real-time messaging with Socket.io</p>
-            </div>
-            <div className="flex items-start md:justify-center">
-              <span className="mr-2">🚀</span>
-              <p>Online user status (Socket.io and React Context)</p>
-            </div>
-            <div className="flex items-start md:justify-center">
-              <span className="mr-2">👌</span>
-              <p>Global state management with Zustand</p>
-            </div>
-            <div className="flex items-start md:justify-center">
-              <span className="mr-2">🐞</span>
-              <p>Error handling both on the server and on the client</p>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 };
