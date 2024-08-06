@@ -43,4 +43,6 @@ npm run build
 npm start
 ```
 
-# Vibr
+# Vibr Demo![vibr](https://github.com/user-attachments/assets/7db83e9f-a5fe-4cd9-88cc-563a2778ddba)
+
+
