@@ -40,4 +40,4 @@ npm run build
 npm start
 ```
 
-# VibR
+# Vibr
