@@ -14,8 +14,10 @@ Some Features:
 -   Global state management with Zustand
 -   Error handling both on the server and on the client
 
-# Run Locally
+# Vibr Demo
+![vibr](https://github.com/user-attachments/assets/7db83e9f-a5fe-4cd9-88cc-563a2778ddba)
 
+# Run Locally
 ### Setup .env file
 
 ```js
@@ -42,7 +44,4 @@ npm run build
 ```shell
 npm start
 ```
-
-# Vibr Demo![vibr](https://github.com/user-attachments/assets/7db83e9f-a5fe-4cd9-88cc-563a2778ddba)
-
 
