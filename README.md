@@ -1,6 +1,9 @@
 # Vibr
 
-Vibr is a chat application. Where a user can connect & touch base with family/friends 
+Vibr is a chat application. Where a user can connect & touch base with family/friends.
+
+# Live Link:
+https://vibr.onrender.com/
 
 Some Features:
 
