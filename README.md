@@ -1,4 +1,6 @@
-# VibR
+# Vibr
+
+Vibr is a chat application. Where a user can connect & touch base with family/friends 
 
 Some Features:
 
