@@ -7,7 +7,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const SplashPage: React.FC = () => {
   const developerSectionRef = useRef<HTMLDivElement>(null);
-  const featuresSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,10 +41,6 @@ const SplashPage: React.FC = () => {
       observer.observe(developerSectionRef.current);
     }
 
-    if (featuresSectionRef.current) {
-      observerRight.observe(featuresSectionRef.current);
-    }
-
     return () => {
       observer.disconnect();
       observerRight.disconnect();
@@ -64,10 +59,10 @@ const SplashPage: React.FC = () => {
         }}
       >
         <div className="flex flex-col items-center justify-center min-h-screen space-y-6 bg-black bg-opacity-60 p-4">
-          <h1 className="text-lg font-medium md:text-5xl animate-fadeIn text-gradient typing-effect">Welcome To Vibr</h1>
-          <p className="text-sm font-light md:text-sm animate-fadeIn delay-1s text-center">Connect with your friends and the world around you.</p>
-          <div className="space-x-4 animate-fadeIn delay-2s flex flex-col md:flex-row">
-            <Link to="/login" className="btn btn-primary px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-purple-300 to-purple-700 rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-900 transition duration-500 transform hover:scale-105 mb-4 md:mb-0">Login</Link>
+          <h1 className="text-lg font-medium sm:text-3xl md:text-5xl animate-fadeIn text-gradient typing-effect">Welcome To Vibr</h1>
+          <p className="text-sm font-light sm:text-base md:text-lg animate-fadeIn delay-1s text-center">Connect with your friends and the world around you.</p>
+          <div className="space-y-4 animate-fadeIn delay-2s flex flex-col md:flex-row md:space-y-0 md:space-x-4">
+            <Link to="/login" className="btn btn-primary px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-purple-300 to-purple-700 rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-900 transition duration-500 transform hover:scale-105">Login</Link>
             <Link to="/signup" className="btn btn-secondary px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-gray-500 to-transparent rounded-lg shadow-lg hover:from-purple-700 hover:to-gray-900 transition duration-500 transform hover:scale-105">Sign Up</Link>
           </div>
         </div>
