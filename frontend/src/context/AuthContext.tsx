@@ -38,38 +38,38 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [authUser, setAuthUser] = useState<AuthUserType | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
-	useEffect(() => {
-		const fetchAuthUser = async () => {
-			try {
-				// console.log("Fetching auth user..."); // Log for debugging
-				const res = await fetch("/api/auth/me", {
-					method: 'GET',
-					credentials: 'include', // Include credentials with request
-				});
-				const data = await res.json();
-				if (!res.ok) {
-					throw new Error(data.error);
-				}
-				setAuthUser(data);
-			} catch (error: any) {
-				console.error(error);
-				toast.error(error.message);
-			} finally {
-				setIsLoading(false);
-			}
-		};
-	
-		fetchAuthUser();
-		logJwtToken(); // Log JWT token after fetching auth user
-	}, []); // Ensure empty dependency array to only run once
-	
-	// Function to log JWT token from cookies
-	const logJwtToken = () => {
-		const jwtToken = getCookieValue('jwt');
-		// console.log('JWT Token from cookies:', jwtToken);
-	};
-	
-	
+    useEffect(() => {
+        const fetchAuthUser = async () => {
+            try {
+                // console.log("Fetching auth user..."); // Log for debugging
+                const res = await fetch("/api/auth/me", {
+                    method: 'GET',
+                    credentials: 'include', // Include credentials with request
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    throw new Error(data.error);
+                }
+                setAuthUser(data);
+            } catch (error: any) {
+                console.error(error);
+                toast.error(error.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+    
+        fetchAuthUser();
+        logJwtToken(); // Log JWT token after fetching auth user
+    }, []); // Ensure empty dependency array to only run once
+    
+    // Function to log JWT token from cookies
+    const logJwtToken = () => {
+        const jwtToken = getCookieValue('jwt');
+        if (jwtToken) {
+            console.log('JWT Token from cookies:', jwtToken);
+        }
+    };
 
     return (
         <AuthContext.Provider
