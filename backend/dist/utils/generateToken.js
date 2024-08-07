@@ -22,7 +22,7 @@ const generateToken = (userId, res) => {
             sameSite: isProduction ? "none" : "lax",
             secure: isProduction,
         });
-        console.log('Token set in cookie:', token);
+        // console.log('Token set in cookie:', token);
         return token;
     }
     catch (error) {

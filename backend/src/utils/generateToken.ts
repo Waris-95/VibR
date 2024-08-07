@@ -27,7 +27,7 @@ const generateToken = (userId: string, res: Response) => {
             secure: isProduction,
         });
 
-        console.log('Token set in cookie:', token);
+        // console.log('Token set in cookie:', token);
 
         return token;
     } catch (error: any) {

@@ -41,7 +41,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		const fetchAuthUser = async () => {
 			try {
-				console.log("Fetching auth user..."); // Log for debugging
+				// console.log("Fetching auth user..."); // Log for debugging
 				const res = await fetch("/api/auth/me", {
 					method: 'GET',
 					credentials: 'include', // Include credentials with request
@@ -66,7 +66,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	// Function to log JWT token from cookies
 	const logJwtToken = () => {
 		const jwtToken = getCookieValue('jwt');
-		console.log('JWT Token from cookies:', jwtToken);
+		// console.log('JWT Token from cookies:', jwtToken);
 	};
 	
 	

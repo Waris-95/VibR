@@ -21,10 +21,10 @@ declare global {
 
 const protectRoute = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        console.log('Cookies received:', req.cookies); // Log all cookies
+        // console.log('Cookies received:', req.cookies); // Log all cookies
 
         const token = req.cookies.jwt;
-        console.log('Token received:', token); // Log token
+        // console.log('Token received:', token); // Log token
 
         if (!token) {
             console.error('No token provided');
@@ -32,7 +32,7 @@ const protectRoute = async (req: Request, res: Response, next: NextFunction) => 
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as DecodedToken;
-        console.log('Decoded token:', decoded); // Log decoded token
+        // console.log('Decoded token:', decoded); // Log decoded token
 
         if (!decoded) {
             console.error('Invalid token');
@@ -50,7 +50,7 @@ const protectRoute = async (req: Request, res: Response, next: NextFunction) => 
         }
 
         req.user = user;
-        console.log('User authenticated:', user); // Log authenticated user
+        // console.log('User authenticated:', user); // Log authenticated user
 
         next();
     } catch (error: any) {
