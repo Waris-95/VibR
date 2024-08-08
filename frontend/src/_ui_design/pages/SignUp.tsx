@@ -14,14 +14,14 @@ const SignUp = () => {
 						<label className='label p-2'>
 							<span className='text-base label-text'>Full Name</span>
 						</label>
-						<input type='text' placeholder='John Doe' className='w-full input input-bordered  h-10' />
+						<input type='text' placeholder='Full Name' className='w-full input input-bordered  h-10' />
 					</div>
 
 					<div>
 						<label className='label p-2 '>
 							<span className='text-base label-text'>Username</span>
 						</label>
-						<input type='text' placeholder='johndoe' className='w-full input input-bordered h-10' />
+						<input type='text' placeholder='Username' className='w-full input input-bordered h-10' />
 					</div>
 
 					<div>

@@ -10,7 +10,7 @@ const Message = ({ message }: { message: MessageType }) => {
 	const img = fromMe ? authUser?.profilePic : selectedConversation?.profilePic;
 	const chatClass = fromMe ? "chat-end" : "chat-start";
 
-	const bubbleBg = fromMe ? "bg-green-700" : "";
+	const bubbleBg = fromMe ? "bg-purple-400" : "";
 	const shakeClass = message.shouldShake ? "shake" : "";
 
 	return (

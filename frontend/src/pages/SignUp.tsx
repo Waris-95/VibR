@@ -24,8 +24,8 @@ const SignUp = () => {
 
 	return (
 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-			<div className='h-full w-full bg-gray-900 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-transparent'>
-				<h1 className='text-3xl font-semibold text-center text-gray-100'>
+			<div className='w-full p-6 rounded-lg shadow-md bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20'>
+				<h1 className='text-3xl font-semibold text-center text-white'>
 					Sign Up <span className='text-gray-700'></span>
 				</h1>
 
@@ -37,7 +37,7 @@ const SignUp = () => {
 						<input
 							type='text'
 							placeholder='Full Name'
-							className='w-full input input-bordered  h-10'
+							className='w-full input input-bordered h-10 bg-black bg-opacity-50 text-white placeholder-gray-300'
 							value={inputs.fullName}
 							onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
 						/>
@@ -50,7 +50,7 @@ const SignUp = () => {
 						<input
 							type='text'
 							placeholder='johndoe'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-black bg-opacity-50 text-white placeholder-gray-300'
 							value={inputs.username}
 							onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
 						/>
@@ -63,7 +63,7 @@ const SignUp = () => {
 						<input
 							type='password'
 							placeholder='Enter Password'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-black bg-opacity-50 text-white placeholder-gray-300'
 							value={inputs.password}
 							onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
 						/>
@@ -76,7 +76,7 @@ const SignUp = () => {
 						<input
 							type='password'
 							placeholder='Confirm Password'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-black bg-opacity-50 text-white placeholder-gray-300'
 							value={inputs.confirmPassword}
 							onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
 						/>
@@ -92,7 +92,7 @@ const SignUp = () => {
 					</Link>
 
 					<div>
-						<button className='btn btn-block btn-sm mt-2 border border-transparent' disabled={loading}>
+						<button className='w-full py-2 mt-4 text-white bg-black bg-opacity-50 hover:bg-opacity-75 rounded-md border border-transparent' disabled={loading}>
 							{loading ? "Loading..." : "Sign Up"}
 						</button>
 					</div>
